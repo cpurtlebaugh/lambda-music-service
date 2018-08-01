@@ -1,0 +1,15 @@
+# package directories
+/node_modules
+jspm_packages
+
+# Serverless directories
+/.serverless
+/.webpack
+
+# Env Vars
+config.json
+privatekey.json
+
+# Misc
+.DS_Store
+yarn-error.log
