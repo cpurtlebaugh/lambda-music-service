@@ -13,7 +13,7 @@ const client 		= new google.auth.JWT(
     null
 );
 
-export async function fetchData(){
+export async function fetchSheetData(){
 	try {
 		let token 				= await getToken();
 		return getSheet(spotifySheetID, token);
@@ -56,7 +56,7 @@ export async function getSheet(id, token){
 						name: name,
 						spotifyId: spotifyId
 					}
-				})
+				});
 				resolve(result);
 			}
 		})

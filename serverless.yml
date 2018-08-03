@@ -28,7 +28,9 @@ provider:
   runtime: nodejs6.10
   timeout: 300
   region: us-west-2
-
+  # role: arn:aws:iam::${file(./config.json):iam}:role/lambda-s3-cloudwatch-access
+  role: ${file(./config.json):iam}
+# # you can define service wide environment variables here
   environment:
     GOOGLE_PRIVATE_KEY: ${file(./privatekey.json):private_key}
     GOOGLE_CLIENT_EMAIL: ${file(./privatekey.json):client_email}
@@ -39,6 +41,11 @@ provider:
 functions:
   getData:
     handler: handler.getData
+    events: # All events associated with this function
+      - http:
+          path: /music-info
+          method: get
+          cors: true
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
