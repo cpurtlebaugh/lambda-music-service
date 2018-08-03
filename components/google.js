@@ -49,7 +49,7 @@ export async function getSheet(id, token){
 				reject(err);
 			} else {
 				console.log('res: ', res.data.values.length);
-				let result = res.data.values.slice(1,5).map((el) => {
+				let result = res.data.values.map((el) => {
 					let name = el.slice()[0];
 					let spotifyId = el.slice()[1];
 					return {

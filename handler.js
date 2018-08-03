@@ -14,9 +14,9 @@ export const getData = async (event, context, callback) => {
 
     const response = {
         "statusCode": 200,
-        // "headers": { 
-        //   "Access-Control-Allow-Origin": "http://localhost:3000",
-        // },
+        "headers": { 
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+        },
         "body": JSON.stringify(getArtists),
         "isBase64Encoded": false
       };

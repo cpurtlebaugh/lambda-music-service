@@ -24,7 +24,10 @@ export async function getAccessToken(){
 
 export async function getArtistData(data, token){
 	try {
-		let ids = data[0].spotifyId + ',' + data[1].spotifyId;
+		let ids = data.slice(1).map((artist, index) => {
+			return artist.spotifyId;
+		}).toString();
+
 		let url = `https://api.spotify.com/v1/artists/?ids=${ids}`
 		let response = await axios({
 	        method: 'get',
