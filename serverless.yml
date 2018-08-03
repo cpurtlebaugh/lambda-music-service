@@ -33,7 +33,8 @@ provider:
     GOOGLE_PRIVATE_KEY: ${file(./privatekey.json):private_key}
     GOOGLE_CLIENT_EMAIL: ${file(./privatekey.json):client_email}
     GOOGLE_SHEET_ID: ${file(./config.json):google}
-    SPOTIFY_ACCESS_TOKEN: ${file(./config.json):spotify}
+    SPOTIFY_CLIENT_ID: ${file(./config.json):spotify.client_id}
+    SPOTIFY_CLIENT_SECRET: ${file(./config.json):spotify.client_secret}
 
 functions:
   getData:

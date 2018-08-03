@@ -5,6 +5,7 @@
   "author": "Casper Purtlebaugh",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-runtime": "^6.26.0",
     "googleapis": "^32.0.0"
   },

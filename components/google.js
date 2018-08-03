@@ -5,7 +5,6 @@ const sheets 		= google.sheets('v4');
 const client_email  = process.env.GOOGLE_CLIENT_EMAIL;
 const private_key   = process.env.GOOGLE_PRIVATE_KEY;
 const spotifySheetID = process.env.GOOGLE_SHEET_ID;
-
 const client 		= new google.auth.JWT(
     client_email,
     null,
@@ -43,14 +42,22 @@ export async function getSheet(id, token){
 			range: 'A:B',
 			access_token: token
 		};
-
+		
 		sheets.spreadsheets.values.get(req, (err, res) => {
 			if(err){
 				console.log('err: ', err);
 				reject(err);
 			} else {
 				console.log('res: ', res.data.values.length);
-				resolve(res.data.values.slice(1));
+				let result = res.data.values.slice(1,5).map((el) => {
+					let name = el.slice()[0];
+					let spotifyId = el.slice()[1];
+					return {
+						name: name,
+						spotifyId: spotifyId
+					}
+				})
+				resolve(result);
 			}
 		})
 	});
